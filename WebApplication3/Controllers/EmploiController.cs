@@ -33,7 +33,7 @@ namespace WebApplication3.Controllers
 
             return emploi;
         }
-        [HttpPost]
+        [HttpPost("{personneId}/Emplois")]
         public async Task<IActionResult> PostEmplois(int personneId, [FromBody] Emploi emploi)
         {
             var personne = await _context.Personnes.FindAsync(personneId);
