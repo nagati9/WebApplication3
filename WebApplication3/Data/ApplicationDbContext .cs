@@ -13,7 +13,7 @@ namespace WebApplication3.Data
 
         public DbSet<Personne> Personnes { get; set; }
         public DbSet<Emploi> Emplois { get; set; }
-        public DbSet<Produits> Produits { get; set; }
+       
      
 
     }

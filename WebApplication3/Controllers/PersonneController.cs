@@ -17,6 +17,9 @@ namespace WebApplication3.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Récupère toutes les personnes enregistrées
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Personne>>> GetPersonnes()
         {
@@ -25,6 +28,10 @@ namespace WebApplication3.Controllers
                 .OrderBy(p => p.Nom)
                 .ToListAsync();
         }
+
+        /// <summary>
+        /// Récupère la personne enregistrée par ID
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<ActionResult<Personne>> GetPersonnes(int id)
         {
@@ -37,6 +44,10 @@ namespace WebApplication3.Controllers
 
             return personne;
         }
+
+        /// <summary>
+        /// Enregistre une nouvelle personne 
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostPersonnes(Personne personne)
         {

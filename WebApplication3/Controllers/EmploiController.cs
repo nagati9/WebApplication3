@@ -16,11 +16,17 @@ namespace WebApplication3.Controllers
         {
             _context = context;
         }
+        /// <summary>
+        /// Récupère toutes les emplois enregistrées
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Emploi>>> GetEmplois()
         {
             return await _context.Emplois.ToListAsync();
         }
+        /// <summary>
+        /// Récupère toutes les emplois par ID
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<ActionResult<Emploi>> GetEmplois(int id)
         {
@@ -33,6 +39,9 @@ namespace WebApplication3.Controllers
 
             return emploi;
         }
+        /// <summary>
+        /// Enregistre un emploi pour une personne
+        /// </summary>
         [HttpPost("{personneId}/Emplois")]
         public async Task<IActionResult> PostEmplois(int personneId, [FromBody] Emploi emploi)
         {
