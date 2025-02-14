@@ -16,7 +16,7 @@
         [Required]
         public DateTime DateNaissance { get; set; }
 
-        public ICollection<Emploi> Emplois { get; set; } = new List<Emploi>();
+        public List<Emploi> Emplois { get; set; } = new List<Emploi>();
     }
 
 }

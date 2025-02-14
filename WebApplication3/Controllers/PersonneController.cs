@@ -25,6 +25,29 @@ namespace WebApplication3.Controllers
                 .OrderBy(p => p.Nom)
                 .ToListAsync();
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Personne>> GetPersonnes(int id)
+        {
+            var personne = await _context.Personnes.Include(p => p.Emplois).FirstOrDefaultAsync(p => p.Id == id);
 
+            if (personne == null)
+            {
+                return NotFound();
+            }
+
+            return personne;
+        }
+        [HttpPost]
+        public async Task<IActionResult> PostPersonnes(Personne personne)
+        {
+            if (personne == null)
+            {
+                return NotFound(new { message = "Cet untilisateur n'est pas dans la bdd" });
+            }
+            _context.Personnes.Add(personne);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetPersonnes), new { id = personne.Id }, personne);
+
+        }
     }
 }

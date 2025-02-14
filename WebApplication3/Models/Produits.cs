@@ -8,7 +8,6 @@ namespace WebApplication3.Models
         public string Nom { get; set; }
         public string Prix { get; set; }
 
-        [ForeignKey("Id")]
-        public TypeProduits TypeProduit { get; set; }
+     
     }
 }
